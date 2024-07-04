@@ -27,30 +27,13 @@ pipx install git+https://github.com/sajML/meltano-tap-ex1
 
 ## Usage
 
-You can easily run `tap-ex1` by itself or in a pipeline using [Meltano](https://meltano.com/).
+You can easily run `tap-ex1` by itself (pip install tap-ex1) or in a pipeline using [Meltano](https://meltano.com/):
 
-
-
-
-### Create and Run Tests
-
-You can encapsulate the entire workflow in two Docker images: one for Meltano and another for FastAPI. The process can be executed and accessed via http://localhost:8001 with the following command:
-
-```bash
-wget https://raw.githubusercontent.com/sajML/meltano-tap-ex1/main/docker-comp-Hub.yaml
-docker compose -f docker-comp-Hub.yaml up
-```
 
 ### Testing with [Meltano](https://www.meltano.com)
 
 _**Note:** This tap will work in any Singer environment and does not require Meltano.
 Examples here are for convenience and to streamline end-to-end orchestration scenarios._
-
-<!--
-Developer TODO:
-Your project comes with a custom `meltano.yml` project file already created. Open the `meltano.yml` and follow any "TODO" items listed in
-the file.
--->
 
 Next, install Meltano (if you haven't already) and any needed plugins:
 
@@ -68,10 +51,21 @@ Now you can test and orchestrate using Meltano:
 # Test invocation:
 meltano invoke tap-ex1 --version
 # OR run a test `elt` pipeline:
-meltano elt tap-ex1 target-jsonl
+meltano elt tap-ex1 target-csv
 ```
 
 
+## Install using Docker
+
+You can encapsulate the entire workflow in two Docker images: one for Meltano and another for FastAPI. The process can be executed and accessed via http://localhost:8001/data with the following command:
+
+```bash
+wget https://raw.githubusercontent.com/sajML/meltano-tap-ex1/main/docker-comp-Hub.yaml
+docker compose -f docker-comp-Hub.yaml up
+```
+
+
+<!--
 ```bash
 docker build -t ex1-tap-img -f Dockerfile.meltano .
 docker run --volume $(pwd)/output:/app/output ex1-tap-img
@@ -87,3 +81,4 @@ docker run astro_067921/airflow:latest ls
 
 docker run --volume $(pwd)/output:/app/output sajjadgoudarzi/vicev-ex1-meltano:latest
 ```
+-->
