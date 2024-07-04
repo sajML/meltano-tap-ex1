@@ -38,10 +38,12 @@ Examples here are for convenience and to streamline end-to-end orchestration sce
 Next, install Meltano (if you haven't already) and any needed plugins:
 
 ```bash
+# Clone project
+git clone https://github.com/sajML/meltano-tap-ex1.git
 # Install meltano
 pipx install meltano
 # Initialize meltano within this directory
-cd tap-ex1
+cd meltano-tap-ex1
 meltano install
 ```
 
